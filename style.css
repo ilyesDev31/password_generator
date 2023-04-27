@@ -1,0 +1,244 @@
+:root{
+    --green:#a4ffaf;
+    --black: rgb(36,35,43);
+    --black-two: rgb(24,23,31);
+    --strength:rgb(251,203,99);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: black;
+}
+.title{
+    color: #adadad;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.output{
+    color: white;
+    max-width: 450px;
+    background-color: var(--black);
+    padding: 15px 20px;
+    margin: 2rem auto 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    position: relative;
+}
+.output i{
+    cursor: pointer;
+    position: relative;
+}
+.output::before{
+    content: "copy to clipboard";
+    font-style: inherit;
+    position:absolute;
+    right:0;
+    font-size: 12px;
+    font-weight: normal;
+    transform: translate(50%,0px);
+    top: -15px;
+    background-color: var(--green);
+    color: black;
+    border-radius: 6px;
+    padding: 6px 4px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    -webkit-transform: translate(00%,-15px);
+    -moz-transform: translate(50%,0px);
+    -ms-transform: translate(50%,0px);
+    -o-transform: translate(50%,0px);
+    opacity: 0;
+    transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    -o-transition: opacity .5s;
+}
+.output::after{
+    opacity: 0;
+    content: "";
+    position: absolute;
+    right: 28px;
+    top: -6px;
+    width: 0;
+    height: 0;
+    border: 5px solid;
+    border-color: var(--green) transparent transparent transparent;
+    transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    -o-transition: opacity .5s;
+}
+.output.active::before,
+.output.active::after{
+    opacity: 1;
+}
+.password-create{
+    max-width: 450px;
+    background-color: var(--black);
+    margin: 0 auto;
+    color: white;
+    padding: 20px;
+}
+.password-create .length{
+    display: flex;
+    justify-content: space-between;
+    color: #adadad;
+    align-items: center;
+}
+.password-create .length .leng{
+    color: var(--green);
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+input{
+    width: 100%;
+    margin:15px 0 ;
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+    background: var(--black-two);
+    cursor: pointer;
+    height: 5px;
+}
+input[type=range]:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid var(--green);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--green);
+    cursor: pointer;
+    margin-top: -2px;
+    /*YouneedtospecifyamargininChrome,butinFirefoxandIEitisautomatic*/
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+input[type=range]::-webkit-slider-thumb:hover{
+    background-color: var(--black);
+}
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+  }
+
+  .list{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .list > div{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    height: 20px;
+  }
+  .list > div p{
+    display: block;
+    margin-top: 3px;
+  }
+  .list > div > div{
+    width: 17px;
+    height: 17px;
+    border:1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .list > div > div:hover{
+    border-color: var(--green);
+    cursor: pointer;
+  }
+  .list > div > div i{
+    font-size: 10px;
+    opacity: 0;
+    color: var(--black-two);
+  }
+  .list > div.active > div{
+    background-color: var(--green);
+    border-color: var(--green);
+  }
+  .list > div.active > div i{
+    color: var(--black);
+    font-size: 12px;
+    opacity: 1;
+  }
+
+  .password-strength{
+    background-color: var(--black-two);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    margin-top: 20px;
+    padding: 15px 25px;
+  }
+  .password-strength .text{
+    font-size: 13px;
+    color: #adadad;
+  }
+  .password-strength .etat{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.password-strength .etat p{
+    margin-top: 5px;
+}
+  .password-strength .etat .bars{
+    display: flex;
+    gap: 5px;
+    height: 20px;
+    margin: 0;
+  }
+  .password-strength .etat .bars > div{
+    width: 8px;
+    height: 100%;
+    border: 1.5px solid white;
+  }
+  .password-strength .etat .bars > div.active{
+    width: 8px;
+    height: 100%;
+    border: 1.5px solid var(--strength);
+    background-color: var(--strength);
+  }
+  button{
+    width: 100%;
+    margin: 15px 0 0 0;
+    border: 2px solid var(--green);
+    background-color: var(--green);
+    padding: 10px 0;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--black);
+    font-weight: bolder;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  button:hover{
+    background-color: var(--black);
+    color: var(--green);
+  }
